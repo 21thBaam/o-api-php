@@ -4,8 +4,9 @@ require 'conexion.php';
 header("HTTP/1.1 200 OK");
 
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
-	
-	$result = mysqli_query($conn, $sql);
+
+    $sql = "SELECT * FROM prueba";
+    $result = mysqli_query($conn, $sql);
     $iteraciones=0;
 
     if (mysqli_num_rows($result) > 0) {
