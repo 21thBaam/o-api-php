@@ -1,5 +1,5 @@
 <?php
-require '../conexion.php';
+require 'conexion.php';
 
 header("HTTP/1.1 200 OK");
 
