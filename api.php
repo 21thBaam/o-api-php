@@ -7,12 +7,10 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 	$sth = mysqli_query($conn,"SELECT * FROM prueba");
 	$rows = array();
 	while($r = mysqli_fetch_assoc($sth)) {
-		echo "id: " . $r["id"]. " - Name: " . $r["nombre"]. " " . $r["apellido"]. "<br>";
+		//echo "id: " . $r["id"]. " - Name: " . $r["nombre"]. " " . $r["apellido"]. "<br>";
 		$rows[] = array_merge($r);
 	}
 	print json_encode($rows);
-	var_dump($rows);
-	echo "<br>---------------<br>";
 	exit();
 }
 
