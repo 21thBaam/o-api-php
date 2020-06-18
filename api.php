@@ -7,6 +7,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 	$sth = mysqli_query("SELECT * FROM prueba");
 	$rows = array();
 	while($r = mysqli_fetch_assoc($sth)) {
+		echo "id: " . $r["id"]. " - Name: " . $r["nombre"]. " " . $r["apellido"]. "<br>";
 		$rows[] = $r;
 	}
 	print json_encode($rows);
