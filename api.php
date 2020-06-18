@@ -4,6 +4,24 @@ require 'conexion.php';
 header("HTTP/1.1 200 OK");
 
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
+	
+	$result = mysqli_query($conn, $sql);
+    $iteraciones=0;
+
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        while($row = mysqli_fetch_assoc($result)) {
+            $resultado[$iteraciones] = array_merge($row);
+            $iteraciones++;
+        }
+    } else {
+        //echo "0 results";
+        $resultado = 0;
+    }
+    mysqli_close($conn);
+
+    var_dump($resultado);
+	/*
 	$sth = mysqli_query("SELECT * FROM prueba");
 	$rows = array();
 	$iteraciones=0;
@@ -20,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 	
 	echo "---------------";
 	
-	var_dump($resultado);
+	var_dump($resultado);*/
 	
 	exit();
 }
