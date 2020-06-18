@@ -6,11 +6,22 @@ header("HTTP/1.1 200 OK");
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
 	$sth = mysqli_query("SELECT * FROM prueba");
 	$rows = array();
+	$iteraciones=0;
+	$resultado[$iteraciones] = array_merge($row);
+    $iteraciones++;
 	while($r = mysqli_fetch_assoc($sth)) {
 		echo "id: " . $r["id"]. " - Name: " . $r["nombre"]. " " . $r["apellido"]. "<br>";
-		$rows[] = $r;
+		$rows[] = array_merge($r);
+		$resultado[$iteraciones] = array_merge($row);
+		$iteraciones++;
 	}
 	print json_encode($rows);
+	var_dump($rows);
+	
+	echo "---------------";
+	
+	var_dump($resultado);
+	
 	exit();
 }
 
