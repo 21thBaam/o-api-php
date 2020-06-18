@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
             $iteraciones++;
         }
     } else {
-        //echo "0 results";
+        echo "0 results";
         $resultado = 0;
     }
     mysqli_close($conn);
