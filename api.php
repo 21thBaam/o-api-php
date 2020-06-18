@@ -1,11 +1,9 @@
 <?php
 require '../logica/conexion.php';
 
-header("HTTP/1.1 200 OK");
-
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
 	echo "GET";
-	exit();
+	
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
