@@ -1,7 +1,10 @@
 <?php
 require 'conexion.php';
 
-header("HTTP/1.1 200 OK");
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+header('content-type: application/json; charset=utf-8');
 
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
 	$sth = mysqli_query($conn,"SELECT * FROM prueba");
