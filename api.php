@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
 	$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 	$ok = parse_url($actual_link, PHP_URL_PATH);
 	$urlParameter = str_replace("/api.php/", "", $ok);
-	$sql = "DELETE FROM prueba WHERE id = '$urlParameter' ";
+	$sql = "DELETE FROM usuario WHERE id = '$urlParameter' ";
 	if($conn->query($sql) === TRUE){
 		echo "Deleted";
 	}else{
