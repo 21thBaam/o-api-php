@@ -42,6 +42,10 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
 	echo "<br>".$actual_link;
 	$ok = parse_url($actual_link, PHP_URL_PATH);
 	echo $ok;
+	
+	$bodytag = str_replace("/api.php/", "", $ok);
+	echo " asd ".$bodytag;
+	
 	$sql = "DELETE FROM prueba WHERE id = '$data[id]' ";
 	if($conn->query($sql) === TRUE){
 		echo "Deleted";
