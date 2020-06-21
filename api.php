@@ -37,8 +37,8 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
 	parse_str(file_get_contents("php://input"),$data);
 	var_dump($data);
 	echo "<br>".$data['id'];
-	echo gettype($data['id']);
-	//$sql = "DELETE FROM prueba WHERE id = '$data[id]' ";
+	$sql = "DELETE FROM prueba WHERE id = "$data['id']" ";
+	echo $sql;
 	//echo "<br>".$sql
 	/*if($conn->query($sql) === TRUE){
 		echo "Deleted"
