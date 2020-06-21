@@ -38,11 +38,12 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
 	var_dump($data);
 	echo "<br>".$data['id'];
 	$sql = "DELETE FROM prueba WHERE id = '$data[id]' ";
-	if($conn->query($sql) === TRUE){
+	echo "<br>".$sql
+	/*if($conn->query($sql) === TRUE){
 		echo "Deleted"
 	}else{
 		echo "Error: " . $sql . "<br>" . $conn->error;
-	}
+	}*/
 	exit();
 }
 ?>
