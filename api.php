@@ -40,9 +40,14 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
 	$urlParameter = str_replace("/api.php/", "", $ok);
 	$sql = "DELETE FROM usuario WHERE idUsuario = '$urlParameter' ";
 	if($conn->query($sql) === TRUE){
-		echo "Deleted";
+		$result->status = "success";
+		$result->message = "User Deleted";
+		print json_encode($result);
 	}else{
 		echo "Error: " . $sql . "<br>" . $conn->error;
+		$result->status = "failed";
+		$result->message = "User Not Deleted";
+		print json_encode($result);
 	}
 	exit();
 }
