@@ -35,16 +35,12 @@ if($_SERVER['REQUEST_METHOD'] == 'PUT'){
 if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
 	//echo "DELETE";
 	parse_str(file_get_contents("php://input"),$data);
-	var_dump($data);
-	echo "<br>".$data['id'];
-	$sql = "DELETE FROM prueba WHERE id = ".$data['id']." ";
-	echo $sql;
-	//echo "<br>".$sql
-	/*if($conn->query($sql) === TRUE){
+	$sql = "DELETE FROM prueba WHERE id=".$data['id']." ";
+	if($conn->query($sql) === TRUE){
 		echo "Deleted"
 	}else{
 		echo "Error: " . $sql . "<br>" . $conn->error;
-	}*/
+	}
 	exit();
 }
 ?>
