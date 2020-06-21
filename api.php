@@ -33,7 +33,14 @@ if($_SERVER['REQUEST_METHOD'] == 'PUT'){
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
-	echo "DELETE";
+	//echo "DELETE";
+	parse_str(file_get_contents("php://input"),$post_vars);
+	$sql = "DELETE FROM prueba WHERE id= '$post_vars[id]' ";
+	if($conn->query($sql) === TRUE){
+		echo "Deleted"
+	}else{
+		echo "Error: " . $sql . "<br>" . $conn->error;
+	}
 	exit();
 }
 ?>
