@@ -40,6 +40,7 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
 	var_dump($data);
 	$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 	echo "<br>".$actual_link;
+	var_dump(parse_url($actual_link, PHP_URL_PATH));
 	$sql = "DELETE FROM prueba WHERE id = '$data[id]' ";
 	if($conn->query($sql) === TRUE){
 		echo "Deleted";
