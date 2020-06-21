@@ -34,19 +34,13 @@ if($_SERVER['REQUEST_METHOD'] == 'PUT'){
 
 if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
 	//echo "DELETE";
-	$dataa = file_get_contents("php://input");
-	var_dump($dataa);
-	parse_str(file_get_contents("php://input"),$data);
-	var_dump($data);
+	//parse_str(file_get_contents("php://input"),$data);
 	$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-	echo "<br>".$actual_link;
 	$ok = parse_url($actual_link, PHP_URL_PATH);
-	echo $ok;
+	$urlParameter = str_replace("/api.php/", "", $ok);
+	echo $urlParameter;
 	
-	$bodytag = str_replace("/api.php/", "", $ok);
-	echo " asd ".$bodytag;
-	
-	$sql = "DELETE FROM prueba WHERE id = '$data[id]' ";
+	$sql = "DELETE FROM prueba WHERE id = '$urlParameter' ";
 	if($conn->query($sql) === TRUE){
 		echo "Deleted";
 	}else{
