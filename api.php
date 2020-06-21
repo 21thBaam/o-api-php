@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == 'PUT'){
 
 if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
 	//echo "DELETE";
-	$data = file_get_contents("php://input");
+	parse_str(file_get_contents("php://input"),$data);
 	var_dump($data);
 	echo "<br>".$data['id'];
 	//parse_str(file_get_contents("php://input"),$post_vars);
