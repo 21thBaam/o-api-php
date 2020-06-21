@@ -34,6 +34,8 @@ if($_SERVER['REQUEST_METHOD'] == 'PUT'){
 
 if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
 	//echo "DELETE";
+	$dataa = file_get_contents("php://input");
+	var_dump($dataa);
 	parse_str(file_get_contents("php://input"),$data);
 	var_dump($data);
 	$sql = "DELETE FROM prueba WHERE id = '$data[id]' ";
