@@ -18,11 +18,12 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-	$data = json_decode(file_get_contents("php://input"));
+	/*$data = json_decode(file_get_contents("php://input"));
 	var_dump($data);
 	echo "  :::  ";
 	parse_str(file_get_contents("php://input"),$data2);
-	var_dump($data2);
+	var_dump($data2);*/
+	var_dump(parse_url($url, PHP_URL_QUERY));
 	exit();
 }
 
