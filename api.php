@@ -24,18 +24,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	//print_r($get_array);
 	echo "Nombre: ",$get_array["nombre"],"Apellido: ",$get_array["apellido"];
 	//$sql = "INSERT INTO prueba SET nombre = '$get_array[nombre]', apellido = '$get_array[apellido]';
-	$sql = "INSERT INTO prueba SET nombre = ".1.", apellido = ".2.";
-	if ($conn->query($sql) === TRUE) {
-		echo "New record created successfully";
-		$result->status = "success";
-		$result->message = "User Added";
-		print json_encode($result);
-	} else {
-		echo "Error: " . $sql . "<br>" . $conn->error;
-		$result->status = "failed";
-		$result->message = "User Not Added";
-		print json_encode($result);
-	}
+	$sql = "INSERT INTO prueba SET nombre=1, apellido=2";
+	mysqli_query($conn,$sql);
 	exit();
 }
 
