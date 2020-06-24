@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	//print_r($get_array);
 	echo "Nombre: ",$get_array["nombre"],"Apellido: ",$get_array["apellido"];
 	//$sql = "INSERT INTO prueba SET nombre = '$get_array[nombre]', apellido = '$get_array[apellido]';
-	$sql = "INSERT INTO prueba SET nombre = 'Pedro', apellido = 'Ramirez';
+	$sql = "INSERT INTO prueba SET nombre = 1, apellido = 2;
 	if ($conn->query($sql) === TRUE) {
 		echo "New record created successfully";
 		$result->status = "success";
