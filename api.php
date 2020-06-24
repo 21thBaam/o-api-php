@@ -19,13 +19,10 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$data = json_decode(file_get_contents("php://input"));
-	$sql = "INSERT INTO prueba (nombre, apellido) VALUES('$data[nombre]', '$data[apellido]') ";
-	if ($conn->query($sql) === TRUE) {
-		echo "New record created successfully";
-		var_dump($data);
-	} else {
-		echo "Error: " . $sql . "<br>" . $conn->error;
-	}
+	var_dump($data);
+	echo "  :::  ";
+	parse_str(file_get_contents("php://input"),$data2);
+	var_dump($data2);
 	exit();
 }
 
