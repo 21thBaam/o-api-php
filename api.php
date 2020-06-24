@@ -27,6 +27,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$info = (parse_url($url, PHP_URL_QUERY));
 	$data = json_encode(file_get_contents($info));
 	var_dump($data);
+	$query    = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : '';
+	var_dump($query);
 	exit();
 }
 
