@@ -27,6 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$info = (parse_url($url, PHP_URL_QUERY));
 	parse_str($info, $get_array);
 	print_r($get_array);
+	echo "Nombre: ",$get_array["nombre"],"Apellido: ",$get_array["apellido"];
 	exit();
 }
 
