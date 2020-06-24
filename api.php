@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	parse_str($info, $get_array);
 	//print_r($get_array);
 	//echo "Nombre: ",$get_array["nombre"],"Apellido: ",$get_array["apellido"];
-	$sql = "INSERT INTO usuarios SET 
+	$sql = "INSERT INTO usuario SET 
 	idTipoUsuario='$get_array[idTipoUsuario]', idEstatus='$get_array[idEstatus]', numeroTrabajador='$get_array[numeroTrabajador]', nombre='$get_array[nombre]', 
 	apellidoPaterno='$get_array[apellidoPaterno]', apellidoMaterno='$get_array[apellidoMaterno]', usuario='$get_array[usuario]', numeroOficina='$get_array[numeroOficina]', 
 	telefonoOficina='$get_array[telefonoOficina]', telefonoCasa='$get_array[telefonoCasa]', extension='$get_array[extension]', movil1='$get_array[movil1]', movil2='$get_array[movil2]', 
