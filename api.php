@@ -22,6 +22,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$sql = "INSERT INTO prueba (nombre, apellido) VALUES('$data[nombre]', '$data[apellido]') ";
 	if ($conn->query($sql) === TRUE) {
 		echo "New record created successfully";
+		var_dump($data);
 	} else {
 		echo "Error: " . $sql . "<br>" . $conn->error;
 	}
