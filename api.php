@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	//print_r($get_array);
 	echo "Nombre: ",$get_array["nombre"],"Apellido: ",$get_array["apellido"];
 	//$sql = "INSERT INTO prueba SET nombre = '$get_array[nombre]', apellido = '$get_array[apellido]';
-	$sql = "INSERT INTO prueba SET nombre=1, apellido=2";
+	$sql = "INSERT INTO prueba SET nombre='.$get_array[nombre].', apellido='.$get_array[apellido].' ";
 	mysqli_query($conn,$sql);
 	exit();
 }
