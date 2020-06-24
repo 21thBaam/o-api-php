@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		echo "Error: " . $sql . "<br>" . $conn->error;
 		$result->status = "failed";
 		$result->message = "User Not Added";
-		print json_encode($result)
+		print json_encode($result);
 	}
 	exit();
 }
