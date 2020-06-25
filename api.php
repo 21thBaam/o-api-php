@@ -62,7 +62,6 @@ if($_SERVER['REQUEST_METHOD'] == 'DELETE'){
 		$result->message = "User Deleted";
 		print json_encode($result);
 	}else{
-		echo "Error: " . $sql . "<br>" . $conn->error;
 		$result->status = "failed";
 		$result->message = "User Not Deleted";
 		print json_encode($result);
