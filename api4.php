@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	fwrite($myfile, $get_array["apellido"]);
 	fwrite($myfile, $txt);
 	
-	$sql = "INSERT INTO prueba SET nombre='$get_array(nombre)', apellido='$get_array(apellido)' ";
+	$sql = "INSERT INTO prueba SET nombre=".$get_array('nombre').", apellido=".$get_array('apellido')." ";
 	if (mysqli_query($conn,$sql) === TRUE) {
 		echo "New record created successfully";
 		$result->status = "success";
