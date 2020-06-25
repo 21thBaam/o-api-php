@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	fwrite($myfile, $post);
 	fwrite($myfile, $txt);
 	parse_str($info, $get_array);
-	fwrite($myfile, $info);
+	fwrite($myfile, $get_array);
 	fwrite($myfile, $txt);
 	//print_r($get_array);
 	//echo "Nombre: ",$get_array["nombre"],"Apellido: ",$get_array["apellido"];
