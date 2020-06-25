@@ -17,14 +17,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$txt = "\n";
 	$myfile = fopen("newfile.txt", "w+") or die("Unable to open file!");
 	$post = file_get_contents('php://input');
-	fwrite($myfile, $post);
-	fwrite($myfile, $txt);
-	
-	fwrite($myfile, gettype($post));
-	fwrite($myfile, $txt);
+	$get_array = json_decode($post,true);
 	var_dump($get_array);
-	//print_r($get_array);
-	//echo "Nombre: ",$get_array["nombre"],"Apellido: ",$get_array["apellido"];
+	echo "Nombre: ",$get_array["nombre"],"Apellido: ",$get_array["apellido"];
 	http_response_code(201);
 	fclose($myfile);
 	exit();
