@@ -15,6 +15,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$info = (parse_url($url, PHP_URL_QUERY));
 	fwrite($myfile, $info);
 	fwrite($myfile, $txt);
+	$post = file_get_contents('php://input');
+	fwrite($myfile, $post);
+	fwrite($myfile, $txt);
 	//parse_str($info, $get_array);
 	//print_r($get_array);
 	//echo "Nombre: ",$get_array["nombre"],"Apellido: ",$get_array["apellido"];
