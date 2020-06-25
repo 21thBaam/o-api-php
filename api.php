@@ -46,7 +46,29 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'PUT'){
-	echo "PUT";
+	$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	$ok = parse_url($actual_link, PHP_URL_PATH);
+	$urlParameter = str_replace("/api.php/", "", $ok);
+	
+	$post = file_get_contents('php://input');
+	$get_array = json_decode($post, true);
+	$sql = "UPDATE usuario SET 
+	idTipoUsuario='$get_array[idTipoUsuario]', idEstatus='$get_array[idEstatus]', numeroTrabajador='$get_array[numeroTrabajador]', nombre='$get_array[nombre]', 
+	apellidoPaterno='$get_array[apellidoPaterno]', apellidoMaterno='$get_array[apellidoMaterno]', usuario='$get_array[usuario]', numeroOficina='$get_array[numeroOficina]', 
+	telefonoOficina='$get_array[telefonoOficina]', telefonoCasa='$get_array[telefonoCasa]', extension='$get_array[extension]', movil1='$get_array[movil1]', movil2='$get_array[movil2]', 
+	correo='$get_array[correo]' WHERE idUsuario='$urlParameter'
+	";
+	if (mysqli_query($conn,$sql) === TRUE) {
+		$result->status = "success";
+		$result->message = "User Updated";
+		http_response_code(201);
+		print json_encode($result);
+	} else {
+		$result->status = "failed";
+		$result->message = "User Not Updated";
+		http_response_code(500);
+		print json_encode($result);
+	}
 	exit();
 }
 
