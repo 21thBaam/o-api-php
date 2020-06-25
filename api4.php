@@ -7,23 +7,21 @@ header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 header('content-type: application/json; charset=utf-8');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-	/*$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-	
-	fwrite($myfile, $url);
-	fwrite($myfile, $txt);
-	$info = (parse_url($url, PHP_URL_QUERY));
-	fwrite($myfile, $info);
-	fwrite($myfile, $txt);*/
-	$myfile = fopen("newfile.txt", "w+") or die("Unable to open file!");
-	$txt = "\n";
 	$post = file_get_contents('php://input');
-	fwrite($myfile, $post);
-	fwrite($myfile, $txt);
-	$get_array = json_decode($post,true);
-	fwrite($myfile, $get_array["nombre"]);
-	fwrite($myfile, $txt);
-	fwrite($myfile, $get_array["apellido"]);
-	http_response_code(201);
+	$sql = "INSERT INTO prueba SET nombre='$get_array(nombre)', apellido='$get_array(apellido)' ";
+	if (mysqli_query($conn,$sql) === TRUE) {
+		echo "New record created successfully";
+		$result->status = "success";
+		$result->message = "User Added";
+		http_response_code(201);
+		print json_encode($result);
+	} else {
+		echo "Error: " . $sql . "<br>" . $conn->error;
+		$result->status = "failed";
+		$result->message = "User Not Added";
+		http_response_code(500);
+		print json_encode($result);
+	}
 	exit();
 }
 ?>
