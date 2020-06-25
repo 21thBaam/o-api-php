@@ -23,8 +23,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	fwrite($myfile, $get_array["nombre"]);
 	fwrite($myfile, $txt);
 	fwrite($myfile, $get_array["apellido"]);
-	fwrite($myfile, $txt);
-	echo "Nombre: ",$get_array["nombre"],"Apellido: ",$get_array["apellido"];
 	http_response_code(201);
 	exit();
 }
