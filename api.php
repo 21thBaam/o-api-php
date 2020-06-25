@@ -18,11 +18,13 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-	$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	/*$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 	$info = (parse_url($url, PHP_URL_QUERY));
 	parse_str($info, $get_array);
 	//print_r($get_array);
-	//echo "Nombre: ",$get_array["nombre"],"Apellido: ",$get_array["apellido"];
+	//echo "Nombre: ",$get_array["nombre"],"Apellido: ",$get_array["apellido"];*/
+	$post = file_get_contents('php://input');
+	$get_array = json_decode($post, true);
 	$sql = "INSERT INTO usuario SET 
 	idTipoUsuario='$get_array[idTipoUsuario]', idEstatus='$get_array[idEstatus]', numeroTrabajador='$get_array[numeroTrabajador]', nombre='$get_array[nombre]', 
 	apellidoPaterno='$get_array[apellidoPaterno]', apellidoMaterno='$get_array[apellidoMaterno]', usuario='$get_array[usuario]', numeroOficina='$get_array[numeroOficina]', 
@@ -30,13 +32,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	correo='$get_array[correo]'
 	";
 	if (mysqli_query($conn,$sql) === TRUE) {
-		echo "New record created successfully";
 		$result->status = "success";
 		$result->message = "User Added";
 		http_response_code(201);
 		print json_encode($result);
 	} else {
-		echo "Error: " . $sql . "<br>" . $conn->error;
 		$result->status = "failed";
 		$result->message = "User Not Added";
 		http_response_code(500);
