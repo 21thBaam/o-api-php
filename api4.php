@@ -19,8 +19,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$post = file_get_contents('php://input');
 	fwrite($myfile, $post);
 	fwrite($myfile, $txt);
-	parse_str($post, $get_array);
-	fwrite($myfile, $get_array);
+	
+	fwrite($myfile, gettype($post));
 	fwrite($myfile, $txt);
 	var_dump($get_array);
 	//print_r($get_array);
