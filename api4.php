@@ -7,7 +7,8 @@ header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 header('content-type: application/json; charset=utf-8');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-	$post = file_get_contents('php://input');
+	//$post = file_get_contents('php://input');
+	$post = '{"nombre":"Yo Mero","apellido":"Llege"}';
 	$get_array = json_decode($post, true);
 	$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
 	$txt = "\n";
