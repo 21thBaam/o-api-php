@@ -14,9 +14,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	$info = (parse_url($url, PHP_URL_QUERY));
 	fwrite($myfile, $info);
 	fwrite($myfile, $txt);*/
+	$myfile = fopen("newfile.txt", "w+") or die("Unable to open file!");
+	$txt = "\n";
 	$post = file_get_contents('php://input');
+	fwrite($myfile, $post);
 	var_dump($post);
-	echo typeof($post);
 	var_dump(json_decode($post));
 	$get_array = json_decode($post,true);
 	var_dump($get_array);
