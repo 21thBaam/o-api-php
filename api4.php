@@ -20,9 +20,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	
 	$sql = "INSERT INTO prueba SET nombre='$get_array[nombre]', apellido='$get_array[apellido]' ";
 	if (mysqli_query($conn,$sql) === TRUE) {
-		echo "New record created successfully";
+		$result->status = "success";
+		$result->message = "User Added";
+		http_response_code(200);
+		echo json_encode($result);
 	} else {
-		echo "Error: " . $sql . "<br>" . $conn->error;
+		$result->status = "failed";
+		$result->message = "User Not Added";
+		http_response_code(500);
+		echo json_encode($result);
 	}
 	exit();
 }
