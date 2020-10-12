@@ -48,12 +48,8 @@ if($_SERVER['REQUEST_METHOD'] == 'PUT'){
 	
 	$post = file_get_contents('php://input');
 	$get_array = json_decode($post, true);
-	$sql = "UPDATE usuario SET 
-	idTipoUsuario='$get_array[idTipoUsuario]', idEstatus='$get_array[idEstatus]', numeroTrabajador='$get_array[numeroTrabajador]', nombre='$get_array[nombre]', 
-	apellidoPaterno='$get_array[apellidoPaterno]', apellidoMaterno='$get_array[apellidoMaterno]', usuario='$get_array[usuario]', numeroOficina='$get_array[numeroOficina]', 
-	telefonoOficina='$get_array[telefonoOficina]', telefonoCasa='$get_array[telefonoCasa]', extension='$get_array[extension]', movil1='$get_array[movil1]', movil2='$get_array[movil2]', 
-	correo='$get_array[correo]' WHERE idUsuario='$urlParameter'
-	";
+	$sql = "CALL editUser('$get_array[idTipoUsuario]', '$get_array[idEstatus]', '$get_array[numeroTrabajador]', '$get_array[nombre]', '$get_array[apellidoPaterno]', '$get_array[apellidoMaterno]',
+	'$get_array[usuario]', '$get_array[numeroOficina]', '$get_array[telefonoOficina]', '$get_array[telefonoCasa]', '$get_array[extension]', '$get_array[movil1]', '$get_array[movil2]', '$get_array[correo]', '$urlParameter')";
 	if (mysqli_query($conn,$sql) === TRUE) {
 		$result->status = "success";
 		$result->message = "User Updated";
