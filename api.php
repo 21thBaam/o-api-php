@@ -7,7 +7,7 @@ header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
 header('content-type: application/json; charset=utf-8');
 
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
-	$sth = mysqli_query($conn,"SELECT * FROM usuario");
+	$sth = mysqli_query($conn,"CALL getUsers");
 	$rows = array();
 	while($r = mysqli_fetch_assoc($sth)) {
 		//echo "id: " . $r["id"]. " - Name: " . $r["nombre"]. " " . $r["apellido"]. "<br>";
